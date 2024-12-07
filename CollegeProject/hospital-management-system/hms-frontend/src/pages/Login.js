@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
@@ -13,13 +13,26 @@ const Login = () => {
 
     try {
       const response = await axios.post('http://localhost:4000/api/auth/login', {
-        email,
+        username,
         password,
       });
-      localStorage.setItem('token', response.data.token);
-      navigate('/dashboard');
+      const { token, role } = response.data;
+
+      // Store the token in local storage
+      localStorage.setItem('token', token);
+
+      // Redirect user based on role
+      if (role === 'admin') {
+        navigate('/admin/dashboard');
+      } else if (role === 'doctor') {
+        navigate('/doctor/dashboard');
+      } else if (role === 'patient') {
+        navigate('/patient/dashboard');
+      } else {
+        navigate('/dashboard'); // Default dashboard
+      }
     } catch (err) {
-      setError('Invalid email or password');
+      setError(err.response?.data?.message || 'Invalid username or password');
     }
   };
 
@@ -28,11 +41,12 @@ const Login = () => {
       <h2>Login</h2>
       <form onSubmit={handleLogin}>
         <div>
-          <label>Email</label>
+          <label>Username</label>
           <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Enter your username"
             required
           />
         </div>
@@ -42,10 +56,11 @@ const Login = () => {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter your password"
             required
           />
         </div>
-        {error && <p className="error">{error}</p>}
+        {error && <p className="error" style={{ color: 'red' }}>{error}</p>}
         <button type="submit">Login</button>
       </form>
     </div>

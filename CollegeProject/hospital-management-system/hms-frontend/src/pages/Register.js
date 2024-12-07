@@ -8,21 +8,37 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('patient'); // Default role as 'patient'
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
 
+    // Reset messages
+    setError('');
+    setSuccess('');
+
+    // Basic validation
+    if (!name || !email || !password || !role) {
+      setError('All fields are required.');
+      return;
+    }
+
     try {
+      // Sending POST request to the backend for registration
       const response = await axios.post('http://localhost:4000/api/auth/register', {
         name,
         email,
         password,
         role,
       });
-      navigate('/login');
+
+      // Show success message and redirect
+      setSuccess('Registration successful! Redirecting to login...');
+      setTimeout(() => navigate('/login'), 2000); // Redirect after 2 seconds
     } catch (err) {
-      setError('Registration failed. Please try again.');
+      // Handling errors if registration fails
+      setError(err.response?.data?.message || 'Registration failed. Please try again.');
     }
   };
 
@@ -36,6 +52,7 @@ const Register = () => {
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            placeholder="Enter your name"
             required
           />
         </div>
@@ -45,6 +62,7 @@ const Register = () => {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter your email"
             required
           />
         </div>
@@ -54,6 +72,7 @@ const Register = () => {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter your password"
             required
           />
         </div>
@@ -66,7 +85,8 @@ const Register = () => {
             <option value="admin">Admin</option>
           </select>
         </div>
-        {error && <p className="error">{error}</p>}
+        {error && <p className="error" style={{ color: 'red' }}>{error}</p>} {/* Display error */}
+        {success && <p className="success" style={{ color: 'green' }}>{success}</p>} {/* Display success */}
         <button type="submit">Register</button>
       </form>
     </div>
