@@ -3,6 +3,8 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User'); // Update with the correct path
+const verifyToken = require('../middleware/verifyToken');
+
 const router = express.Router();
 
 // User Registration
