@@ -3,12 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Register = () => {
-  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');  // Changed 'name' to 'username'
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('patient'); // Default role as 'patient'
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [loading, setLoading] = useState(false); // To track loading state
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
@@ -19,15 +20,23 @@ const Register = () => {
     setSuccess('');
 
     // Basic validation
-    if (!name || !email || !password || !role) {
+    if (!username || !email || !password || !role) {
       setError('All fields are required.');
       return;
     }
 
+    // Basic password validation (can be expanded)
+    if (password.length < 6) {
+      setError('Password must be at least 6 characters long.');
+      return;
+    }
+
+    setLoading(true); // Start loading
+
     try {
       // Sending POST request to the backend for registration
       const response = await axios.post('http://localhost:4000/api/auth/register', {
-        name,
+        username,  // Send 'username' as the field
         email,
         password,
         role,
@@ -39,6 +48,8 @@ const Register = () => {
     } catch (err) {
       // Handling errors if registration fails
       setError(err.response?.data?.message || 'Registration failed. Please try again.');
+    } finally {
+      setLoading(false); // End loading
     }
   };
 
@@ -47,12 +58,12 @@ const Register = () => {
       <h2>Register</h2>
       <form onSubmit={handleRegister}>
         <div>
-          <label>Name</label>
+          <label>Username</label>
           <input
             type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Enter your name"
+            value={username}  // Use 'username' instead of 'name'
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Enter your username"
             required
           />
         </div>
@@ -87,7 +98,7 @@ const Register = () => {
         </div>
         {error && <p className="error" style={{ color: 'red' }}>{error}</p>} {/* Display error */}
         {success && <p className="success" style={{ color: 'green' }}>{success}</p>} {/* Display success */}
-        <button type="submit">Register</button>
+        <button type="submit" disabled={loading}> {loading ? 'Registering...' : 'Register'} </button> {/* Button loading state */}
       </form>
     </div>
   );

@@ -3,24 +3,25 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Login = () => {
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState('');  // Keep using 'username' as state
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false); // For loading state
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
+  
     try {
-      const response = await axios.post('http://localhost:4000/api/auth/login', {
-        username,
+      const response = await axios.post('http://localhost:4000/login', {
+        username,  // Send 'username' as field to match API
         password,
       });
       const { token, role } = response.data;
-
+  
       // Store the token in local storage
       localStorage.setItem('token', token);
-
+  
       // Redirect user based on role
       if (role === 'admin') {
         navigate('/admin/dashboard');
@@ -35,6 +36,7 @@ const Login = () => {
       setError(err.response?.data?.message || 'Invalid username or password');
     }
   };
+  
 
   return (
     <div className="login-container">
@@ -61,7 +63,9 @@ const Login = () => {
           />
         </div>
         {error && <p className="error" style={{ color: 'red' }}>{error}</p>}
-        <button type="submit">Login</button>
+        <button type="submit" disabled={loading}>
+          {loading ? 'Logging in...' : 'Login'}
+        </button>
       </form>
     </div>
   );

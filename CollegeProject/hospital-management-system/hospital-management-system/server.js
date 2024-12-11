@@ -26,11 +26,12 @@ connectDB();
 
 // CORS configuration
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: ['http://localhost:3000', 'http://localhost:3001'], // Add all your frontend URLs here
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
-app.use(cors(corsOptions));
+
+app.use(cors(corsOptions)); // Use CORS middleware with custom options
 
 // Middleware to parse JSON
 app.use(express.json());

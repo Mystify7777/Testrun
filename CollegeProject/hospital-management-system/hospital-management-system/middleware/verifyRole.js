@@ -1,9 +1,9 @@
-module.exports = (requiredRole) => {
-    return (req, res, next) => {
-      if (req.user.role !== requiredRole) {
-        return res.status(403).json({ message: 'Access denied' });
-      }
-      next();
-    };
+module.exports = (requiredRoles) => {
+  return (req, res, next) => {
+    // Check if the user's role is in the allowed roles array
+    if (!requiredRoles.includes(req.user.role)) {
+      return res.status(403).json({ message: 'Access denied' });
+    }
+    next();
   };
-  
+};
