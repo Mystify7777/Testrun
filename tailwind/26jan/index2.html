@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Web Page</title>
+    <script defer src="script.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #333;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .navbar .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .navbar .profile {
+            background-color: white;
+            color: #333;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 3rem 2rem;
+            background-color: #f4f4f4;
+        }
+
+        .hero .text {
+            max-width: 50%;
+        }
+
+        .hero .text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            animation: fade-in 2s ease-in-out infinite alternate;
+        }
+
+        .hero .text p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero img {
+            max-width: 40%;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0.7;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .products {
+            padding: 2rem;
+        }
+
+        .products h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .product-category {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 30%;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer .links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer .links a {
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">MyLogo</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Products</a>
+            <a href="#">Contact</a>
+        </div>
+        <button class="profile">Profile</button>
+    </div>
+
+    <div class="hero">
+        <div class="text">
+            <h1 id="hero-heading">Welcome to Our Store</h1>
+            <p id="hero-subheading">Find the best products just for you!</p>
+        </div>
+        <img src="https://via.placeholder.com/400" alt="Hero Image">
+    </div>
+
+    <div class="products">
+        <h2>Our Products</h2>
+
+        <div id="category1" class="product-category"></div>
+        <div id="category2" class="product-category"></div>
+        <div id="category3" class="product-category"></div>
+    </div>
+
+    <div class="footer">
+        <div class="links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Support</a>
+        </div>
+        <p>&copy; 2025 MyStore. All rights reserved.</p>
+    </div>
+
+    <script>
+        // Change hero heading animation
+        const headings = ["Welcome to Our Store", "Discover Amazing Products", "Shop the Best Deals"];
+        let index = 0;
+        const heroHeading = document.getElementById('hero-heading');
+
+        setInterval(() => {
+            index = (index + 1) % headings.length;
+            heroHeading.textContent = headings[index];
+        }, 3000);
+
+        // Product data
+        const products = {
+            category1: [
+                { name: "Product 1", price: "$10" },
+                { name: "Product 2", price: "$20" },
+                { name: "Product 3", price: "$30" },
+            ],
+            category2: [
+                { name: "Product 4", price: "$15" },
+                { name: "Product 5", price: "$25" },
+                { name: "Product 6", price: "$35" },
+            ],
+            category3: [
+                { name: "Product 7", price: "$12" },
+                { name: "Product 8", price: "$22" },
+                { name: "Product 9", price: "$32" },
+            ],
+        };
+
+        // Render products dynamically
+        for (const category in products) {
+            const container = document.getElementById(category);
+            for (const product of products[category]) {
+                container.innerHTML += `
+                    <div class="card">
+                        <h3>${product.name}</h3>
+                        <p>${product.price}</p>
+                    </div>`;
+            }
+        }
+    </script>
+</body>
+</html>

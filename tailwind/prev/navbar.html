@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-white shadow sticky top-0 z-10">
+        <div id="navbar" class="container mx-auto p-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="text-2xl font-bold text-blue-500">BrandName</div>
+            
+                <!-- Navigation Links (Desktop) -->
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#" class="text-gray-700 hover:text-blue-500">Home</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-500">About</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-500">Services</a>
+                    <a href="#" class="text-gray-700 hover:text-blue-500">Contact</a>
+                </nav>
+            
+                <!-- Mobile Menu Button -->
+                <button id="menu-btn" class="md:hidden focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden mt-4 md:hidden space-y-4">
+                <a href="#" class="block text-gray-700 hover:text-blue-500">Home</a>
+                <a href="#" class="block text-gray-700 hover:text-blue-500">About</a>
+                <a href="#" class="block text-gray-700 hover:text-blue-500">Services</a>
+                <a href="#" class="block text-gray-700 hover:text-blue-500">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-blue-600 via-blue-500 to-blue-400 text-white py-24">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-center px-4">
+
+            <!-- Left Content -->
+            <div class="text-center md:text-left md:w-1/2">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight">
+                    Welcome to <span class="text-yellow-400">Your Brand</span>
+                </h1>
+                <p class="mt-4 text-lg md:text-xl text-white opacity-80">
+                    Build amazing things with ease. Tailwind CSS makes it simple to style your website beautifully and responsively.
+                </p>
+                <div class="mt-6">
+                    <a href="#" class="bg-yellow-500 text-white px-8 py-3 rounded-lg shadow-xl hover:bg-yellow-600 transition duration-300 ease-in-out transform hover:scale-105">
+                        Get Started
+                    </a>
+                    
+                    <a href="#" class="ml-4 text-yellow-500 border border-yellow-500 px-8 py-3 rounded-lg hover:bg-yellow-500 hover:text-white transition duration-300 ease-in-out transform hover:scale-105">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+    
+            <!-- Right Content (Image) -->
+            <div class="mt-8 md:mt-0 md:ml-8 md:w-1/2">
+                <img src="https://via.placeholder.com/600x400" alt="Hero Image" class="rounded-lg shadow-xl transform hover:scale-105 transition duration-300 ease-in-out">
+            </div>
+        </div>
+    </section>
+    <section class="py-12 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Our Featured Products</h2>
+    
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300 ease-in-out transform hover:scale-105">
+                    <img src="https://via.placeholder.com/400x300" alt="Product Image" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800">Product 1</h3>
+                        <p class="mt-4 text-gray-600">This is a description of the product. It highlights its features and benefits.</p>
+                        <a href="#" class="mt-4 inline-block text-blue-500 hover:text-blue-600">Learn More</a>
+                    </div>
+                </div>
+    
+                <!-- Card 2 -->
+                <div class="bg-blue-50 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300 ease-in-out transform hover:scale-105">
+
+                    <img src="https://via.placeholder.com/400x300" alt="Product Image" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800">Product 2</h3>
+                        <p class="mt-4 text-gray-600">This is another description of the product. It describes its features and usability.</p>
+                        <a href="#" class="mt-4 inline-block text-blue-500 hover:text-blue-600">Learn More</a>
+                    </div>
+                </div>
+    
+                <!-- Card 3 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300 ease-in-out transform hover:scale-105">
+                    <img src="https://via.placeholder.com/400x300" alt="Product Image" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800">Product 3</h3>
+                        <p class="mt-4 text-gray-600">This is the third product description, emphasizing its importance and application.</p>
+                        <a href="#" class="mt-4 inline-block text-blue-500 hover:text-blue-600">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+</body>
+
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+</script>
+</html>

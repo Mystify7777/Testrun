@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Web Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .navbar {
+            position: sticky;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background-color: #333;
+            color: white;
+            z-index: 1000;
+        }
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .navbar .nav-links {
+            display: flex;
+            gap: 1rem;
+        }
+        .navbar .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .navbar .nav-links a:hover {
+            color: #f39c12;
+        }
+        .navbar .profile-btn {
+            padding: 0.5rem 1rem;
+            background-color: #f39c12;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        .navbar .profile-btn:hover {
+            background-color: #d35400;
+        }
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem;
+            background-color: #f4f4f4;
+        }
+        .hero .text {
+            max-width: 50%;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #555;
+        }
+        .hero img {
+            max-width: 45%;
+            height: auto;
+        }
+        .product-section {
+            padding: 2rem;
+            background-color: #fff;
+        }
+        .product-category {
+            margin-bottom: 2rem;
+        }
+        .product-category h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        .products {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+        }
+        .product-card {
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            flex: 0 0 calc(33.333% - 1rem);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .footer {
+            padding: 1.5rem;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+        .footer .links a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">My Website</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+        <button class="profile-btn">Profile</button>
+    </div>
+
+    <section class="hero">
+        <div class="text">
+            <h1 id="hero-heading">Welcome to My Website</h1>
+            <p>Discover amazing products and deals below!</p>
+        </div>
+        <img src="https://via.placeholder.com/400" alt="Hero Image">
+    </section>
+
+    <section class="product-section" id="product-section">
+        <!-- Products will be dynamically rendered here -->
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 My Website. All Rights Reserved.</p>
+        <div class="links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact Us</a>
+        </div>
+    </footer>
+
+    <script>
+        // Hero heading animation
+        const heroHeading = document.getElementById('hero-heading');
+        let currentText = 0;
+        const heroTexts = ['Welcome to My Website', 'Explore Amazing Products', 'Your One-Stop Shop!'];
+
+        setInterval(() => {
+            currentText = (currentText + 1) % heroTexts.length;
+            heroHeading.textContent = heroTexts[currentText];
+        }, 3000);
+
+        // Product rendering
+        const products = {
+            "Electronics": [
+                { name: "Smartphone", price: "$699" },
+                { name: "Laptop", price: "$999" },
+                { name: "Headphones", price: "$199" }
+            ],
+            "Fashion": [
+                { name: "Jacket", price: "$120" },
+                { name: "Shoes", price: "$80" },
+                { name: "Watch", price: "$250" }
+            ],
+            "Home Appliances": [
+                { name: "Blender", price: "$60" },
+                { name: "Vacuum Cleaner", price: "$200" },
+                { name: "Microwave", price: "$150" }
+            ]
+        };
+
+        const productSection = document.getElementById('product-section');
+
+        for (const category in products) {
+            const categoryDiv = document.createElement('div');
+            categoryDiv.className = 'product-category';
+            categoryDiv.innerHTML = `<h2>${category}</h2>`;
+
+            const productsDiv = document.createElement('div');
+            productsDiv.className = 'products';
+
+            for (const product of products[category]) {
+                productsDiv.innerHTML += `
+                    <div class="product-card">
+                        <h3>${product.name}</h3>
+                        <p>Price: ${product.price}</p>
+                    </div>`;
+            }
+
+            categoryDiv.appendChild(productsDiv);
+            productSection.appendChild(categoryDiv);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Filterable Product List</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold text-center mb-6">Product List</h1>
+
+    <!-- Filter Section -->
+    <div class="flex justify-around mb-6">
+      <div>
+        <label for="priceRange" class="block text-sm font-medium text-gray-700">Price Range</label>
+        <select id="priceRange" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+          <option value="all">All</option>
+          <option value="100-500">₹100 - ₹500</option>
+          <option value="500-1000">₹500 - ₹1000</option>
+          <option value="1000-2000">₹1000 - ₹2000</option>
+        </select>
+      </div>
+      <div>
+        <label for="inStock" class="block text-sm font-medium text-gray-700">Stock Status</label>
+        <select id="inStock" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+          <option value="all">All</option>
+          <option value="inStock">In Stock</option>
+          <option value="outOfStock">Out of Stock</option>
+        </select>
+      </div>
+      <div>
+        <label for="minReview" class="block text-sm font-medium text-gray-700">Minimum Review</label>
+        <select id="minReview" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+          <option value="all">All</option>
+          <option value="4.0">4.0+</option>
+          <option value="4.5">4.5+</option>
+        </select>
+      </div>
+      <div>
+        <label for="color" class="block text-sm font-medium text-gray-700">Color</label>
+        <select id="color" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+          <option value="all">All</option>
+          <option value="Black">Black</option>
+          <option value="White">White</option>
+          <option value="Blue">Blue</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Products Section -->
+    <div id="productContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Product Cards will be dynamically inserted here -->
+    </div>
+  </div>
+
+  <script>
+    const items = [
+    {
+        id: 1,
+        name: "Smartphone",
+        price: 699,
+        compareAtPrice: 799,
+        specs: {
+            brand: "BrandX",
+            storage: "128GB",
+            battery: "4000mAh"
+        },
+        colors: ["Black", "Blue", "White"],
+        variants: ["128GB", "256GB", "512GB"],
+        inStock: true,
+        reviews: 4.5
+    },
+    {
+        id: 2,
+        name: "Laptop",
+        price: 1299,
+        compareAtPrice: 1499,
+        specs: {
+            brand: "BrandY",
+            storage: "512GB SSD",
+            RAM: "16GB"
+        },
+        colors: ["Gray", "Silver"],
+        variants: ["16GB RAM, 512GB SSD", "32GB RAM, 1TB SSD"],
+        inStock: false,
+        reviews: 4.8
+    },
+    {
+        id: 3,
+        name: "Wireless Earbuds",
+        price: 149,
+        compareAtPrice: 199,
+        specs: {
+            brand: "BrandZ",
+            batteryLife: "24 hours",
+            waterproof: true
+        },
+        colors: ["Black", "White", "Pink"],
+        variants: ["Blue-Black", "White-Gold", "Blue-White", "Black-Red"],
+        inStock: true,
+        reviews: 4.2
+    },
+    {
+        id: 4,
+        name: "Smartwatch",
+        price: 249,
+        compareAtPrice: 299,
+        specs: {
+            brand: "BrandW",
+            screenSize: "1.5 inches",
+            fitnessTracking: true
+        },
+        colors: ["Black", "Green", "Blue"],
+        variants: ["Standard Edition", "Sport Edition", "Pro Edition"],
+        inStock: true,
+        reviews: 4.4
+    },
+    {
+        id: 5,
+        name: "Bluetooth Speaker",
+        price: 99,
+        compareAtPrice: 129,
+        specs: {
+            brand: "BrandQ",
+            outputPower: "10W",
+            batteryLife: "10 hours"
+        },
+        colors: ["Red", "Black", "Gray"],
+        variants: ["Black-Gold", "Red-Black", "Gray-Black"],
+        inStock: false,
+        reviews: 4.3
+    },
+    {
+        id: 6,
+        name: "Gaming Console",
+        price: 499,
+        compareAtPrice: 599,
+        specs: {
+            brand: "BrandG",
+            storage: "1TB",
+            supportedResolution: "4K"
+        },
+        colors: ["Black", "White"],
+        variants: ["1TB Standard", "1TB Pro"],
+        inStock: true,
+        reviews: 4.7
+    },
+    {
+        id: 7,
+        name: "Tablet",
+        price: 399,
+        compareAtPrice: 449,
+        specs: {
+            brand: "BrandT",
+            screenSize: "10.5 inches",
+            stylusSupport: true
+        },
+        colors: ["Silver", "Gold", "Rose Gold"],
+        variants: ["WiFi Only", "WiFi + Cellular"],
+        inStock: true,
+        reviews: 4.6
+    },
+    {
+        id: 8,
+        name: "Camera",
+        price: 899,
+        compareAtPrice: 999,
+        specs: {
+            brand: "BrandC",
+            resolution: "24MP",
+            lens: "Kit Lens 18-55mm"
+        },
+        colors: ["Black", "Gray"],
+        variants: ["Body Only", "With Kit Lens", "With Prime Lens"],
+        inStock: false,
+        reviews: 4.4
+    },
+    {
+        id: 9,
+        name: "Gaming Headset",
+        price: 199,
+        compareAtPrice: 249,
+        specs: {
+            brand: "BrandH",
+            microphone: true,
+            surroundSound: "7.1"
+        },
+        colors: ["Black", "Red", "Blue"],
+        variants: ["Standard", "RGB Edition"],
+        inStock: true,
+        reviews: 4.5
+    },
+    {
+        id: 10,
+        name: "Electric Scooter",
+        price: 799,
+        compareAtPrice: 899,
+        specs: {
+            brand: "BrandE",
+            range: "30 miles",
+            topSpeed: "20 mph"
+        },
+        colors: ["Black", "White", "Blue"],
+        variants: ["Standard", "Pro"],
+        inStock: true,
+        reviews: 4.3
+    }
+];
+
+    const productContainer = document.getElementById("productContainer");
+    const priceRangeFilter = document.getElementById("priceRange");
+    const stockFilter = document.getElementById("inStock");
+    const reviewFilter = document.getElementById("minReview");
+    const colorFilter = document.getElementById("color");
+
+    // Function to display items in cards
+    const displayItems = (filteredItems) => {
+      productContainer.innerHTML = ""; // Clear the container
+      if (filteredItems.length === 0) {
+        productContainer.innerHTML = `<p class="col-span-full text-center text-gray-500">No items match your filter.</p>`;
+        return;
+      }
+      filteredItems.forEach((item) => {
+        productContainer.innerHTML += `
+          <div class="bg-white shadow-md rounded-lg overflow-hidden">
+            <!--<img src="https://via.placeholder.com/300x200" alt="${item.name}" class="w-full h-48 object-cover">-->
+            <div class="p-4">
+              <h2 class="text-lg font-bold">${item.name}</h2>
+              <p class="text-sm text-gray-500">Brand: ${item.specs.brand}</p>
+              <p class="text-gray-800 font-semibold">₹${item.price} <span class="line-through text-gray-500">₹${item.compareAtPrice}</span></p>
+              <p class="text-sm text-gray-500">${item.inStock ? "In Stock" : "Out of Stock"}</p>
+              <p class="text-sm text-gray-500">Reviews: ${item.reviews}★</p>
+            </div>
+          </div>`;
+      });
+    };
+
+    // Function to filter items based on selected filters
+    const filterItems = () => {
+      let filteredItems = [...items];
+
+      // Filter by price range
+      const priceRangeValue = priceRangeFilter.value;
+      if (priceRangeValue !== "all") {
+        const [minPrice, maxPrice] = priceRangeValue.split("-").map(Number);
+        filteredItems = filteredItems.filter(item => item.price >= minPrice && item.price <= maxPrice);
+      }
+
+      // Filter by stock status
+      const stockValue = stockFilter.value;
+      if (stockValue === "inStock") {
+        filteredItems = filteredItems.filter(item => item.inStock);
+      } else if (stockValue === "outOfStock") {
+        filteredItems = filteredItems.filter(item => !item.inStock);
+      }
+
+      // Filter by reviews
+      const minReviewValue = parseFloat(reviewFilter.value);
+      if (!isNaN(minReviewValue)) {
+        filteredItems = filteredItems.filter(item => item.reviews >= minReviewValue);
+      }
+
+      // Filter by color
+      const colorValue = colorFilter.value;
+      if (colorValue !== "all") {
+        filteredItems = filteredItems.filter(item => item.colors.includes(colorValue));
+      }
+
+      // Display the filtered items
+      displayItems(filteredItems);
+    };
+
+    // Event listeners for filters
+    priceRangeFilter.addEventListener("change", filterItems);
+    stockFilter.addEventListener("change", filterItems);
+    reviewFilter.addEventListener("change", filterItems);
+    colorFilter.addEventListener("change", filterItems);
+
+    // Initial Display of all items
+    displayItems(items);
+  </script>
+</body>
+</html>

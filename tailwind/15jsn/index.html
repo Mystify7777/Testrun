@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Management</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Add Product</h1>
+  <form id="productForm">
+    <div class="form-group">
+      <label for="name">Product Name</label>
+      <input type="text" id="name" required />
+    </div>
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input type="number" id="price" required />
+    </div>
+    <div class="form-group">
+      <label for="compareAtPrice">Compare At Price</label>
+      <input type="number" id="compareAtPrice" required />
+    </div>
+    <div class="form-group">
+      <label for="brand">Brand</label>
+      <input type="text" id="brand" required />
+    </div>
+    <div class="form-group">
+      <label for="connectivity">Connectivity</label>
+      <input type="text" id="connectivity" required />
+    </div>
+    <div class="form-group">
+      <label for="energySaving">Energy Saving</label>
+      <select id="energySaving">
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="colors">Colors (comma separated)</label>
+      <input type="text" id="colors" required />
+    </div>
+    <div class="form-group">
+      <label for="variants">Variants (comma separated)</label>
+      <input type="text" id="variants" required />
+    </div>
+    <div class="form-group">
+      <label for="inStock">In Stock</label>
+      <select id="inStock">
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="reviews">Reviews</label>
+      <input type="number" step="0.1" id="reviews" required />
+    </div>
+    <button type="submit">Add Product</button>
+  </form>
+
+  <div id="output"></div>
+  <div id="productCards"></div>
+
+  <script src="script2.js"></script>
+</body>
+</html>

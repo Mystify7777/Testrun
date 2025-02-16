@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mystify.Portfolio</title>
+  
+    <link rel="stylesheet" href="newStyles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <nav>
+        <div class="logo">Mystify</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-adjust"></i></button>
+    </nav>
+    
+    <header class="hero">
+        <div class="hero-text">
+            <h1>Welcome to My Portfolio</h1>
+            <p>A passionate developer creating stunning web experiences.</p>
+        </div>
+        <div class="hero-image">
+            <img src="placeholder.jpg" alt="Hero-Banner-Image">
+        </div>
+    </header>
+    
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I am Aryan Kumar.</p>
+    </section>
+    
+    <section id="skills">
+        <h2>My Skills</h2>
+        <div class="skills-container">
+           
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>My Projects</h2>
+        <div class="projects-container">
+            
+        </div>
+    </section>
+
+    <section id="contact" class="contact-form">
+        <h2>Contact Me</h2>
+        <form action="mailto:aryankumar.55566@gmail.com" method="POST" enctype="text/plain">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="#" class="fab fa-instagram"></a>
+            <a href="#" class="fab fa-github"></a>
+            <a href="#" class="fab fa-linkedin"></a>
+            <a href="#" class="fas fa-envelope"></a>
+        </div>
+    </footer>
+    
+    <script src="newScript.js"></script>
+</body>
+</html>

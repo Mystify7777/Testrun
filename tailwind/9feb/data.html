@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        body{
+            font-family: sans-serif;
+            width: 100vw;
+            overflow: hidden;
+        }
+
+        .list-container {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .product-card {
+            width: 320px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+
+        .product-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+
+        .product-card-cart{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .product-card-cart img{
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+
+        .product-card p , .product-card-cart p {
+            font-size: 18px;
+            color: #333;
+            margin: 10px 0;
+            font-weight: 600;
+        }
+
+        .product-card p:last-of-type {
+            font-size: 16px;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .cart-list{
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 0 1rem;
+            height: 100%;
+            overflow-y: scroll;
+            background-color: #ddedff;
+            width: 500px;
+            transform: translateX(100%);
+            transition: transform .5s linear;
+        }
+
+        .cart-list-con{
+            flex-direction: column;
+        }
+
+        nav{
+            display: flex;
+            justify-content: space-between;
+            padding: .5rem 2rem;
+            border-bottom: 1px solid #ccc;
+        }
+        .cart-drawer-head{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close-button{
+            height: 50px;
+            background-color: rgb(255, 131, 131);
+        }
+
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <nav>
+        <div class="log"><h1>Our store</h1></div>
+        <button class="clg-btn">Cart</button>
+    </nav>
+    <div class="product-list-container list-container"></div>
+    
+
+    <div class="cart-list ">
+        <div class="cart-drawer-head">
+            <h1>CART</h1>
+            <button class="close-button">X</button>
+        </div>
+        <div class="list-container cart-list-con"></div>
+    </div>
+    <script>
+        let products = [
+            {
+                id: 1,
+                name: "Micromax phone",
+                image:
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXUVXERm3yWgAa9s5uAIG2et2PtD1mM-1n6g&s",
+                price: 5999,
+            },
+            {
+                id: 2,
+                name: "Iphone phone",
+                image:
+                    "https://c8.alamy.com/comp/R06CKK/galati-romania-october-26-2018-apple-launch-the-new-smartphone-iphone-xs-and-iphone-xs-max-iphone-xs-max-on-white-background-R06CKK.jpg",
+                price: 79999,
+            },
+            {
+                id: 3,
+                name: "Xomi phone",
+                image:
+                    "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRWFzcSYfnHxhTMbHfuoLqPuRks4-Umy31_X0psKQXy8fOGPNshMGSOckiMsLbYFddeMKkVKtCj2dMqemdpgiQbarGUrgKIlXm69758X5FR",
+                price: 12999,
+            },
+            {
+                id: 4,
+                name: "Redmi phone",
+                image:
+                    "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRo70Ctm4jZ4HfyQx1rlF4_mMSEmG-VDoOB4_ciJvEeoTc93iIN9zgwNKgQegqUjzEr-xe0RdtPcq57-L11dUtBO0A92SHk-aW8utObQBW5",
+                price: 15999,
+            },
+            {
+                id: 5,
+                name: "Lava phone",
+                image:
+                    "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRxqpSU5Bw6w7DaVrodwHVeUzZOtRy7XQHWzJFgs2O8VyHeNirYz_DTSdqwt8wEmIYLQ0AVFQC435mMevGNsTozuyow4iGs3M4k-U5KXodHuurmDZJx5hJ8Nw",
+                price: 7999,
+            },
+            {
+                id: 6,
+                name: "Nokia phone",
+                image:
+                    "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRXz_yL8Ejjp8S5gpMoIZwVS26Tt2LlR4MPlhbbUQmoCg3cZ9jNi1U9ddU_Y-5BPI_TCHeTGDubr_gi_OaqIDOb5SUCZH4LCs5iktZEt6QBCx8T7FWCc57F",
+                price: 10999,
+            },
+        ];
+
+        let cart = [];
+
+        let temp = ``;
+
+        for (let product of products) {
+            temp += `<div class="product-card">
+            <img src="${product.image}" alt="image" height:300 width:300>
+            <p>${product.name}</p>
+            <p>$ ${product.price}</p>
+            <button class="button" id="${product.id}">Add to cart </button>
+            </div>
+            `;
+        }
+
+        document.querySelector(".product-list-container").innerHTML = temp;
+
+        let all_button = document.querySelectorAll(".button");
+        for (let button of all_button) {
+            button.addEventListener("click", (event) => {
+                for (product of products) {
+                    if (event.target.id == product.id) {
+                        cart.push(product);
+                    }
+                }
+            });
+        }
+
+        document.querySelector(".clg-btn").addEventListener("click", showCartItem);
+
+        function showCartItem(){
+            console.log(cart);
+            let temp = ""
+            for (let product of cart) {
+            temp += `<div class="product-card-cart">
+            <img src="${product.image}" alt="image" height:"300" width:"300">
+            <p>${product.name}</p>
+            <p>${product.price}</p>
+            </div>
+            `;
+        }
+        document.querySelector(".cart-list-con").innerHTML = temp
+        document.querySelector(".cart-list").style.transform = "translateX(0%)";
+        }
+
+        document.querySelector(".close-button").addEventListener('click', ()=>{
+            document.querySelector(".cart-list").style.transform = "translateX(100%)";
+        })
+    </script>
+</body>
+
+</html>

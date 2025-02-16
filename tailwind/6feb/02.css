@@ -1,0 +1,147 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    transition: background 0.3s, color 0.3s;
+    background-color: #181818; /* Dark theme default */
+    color: #e0e0e0; /* Light text color for dark theme */
+}
+
+.navbar {
+    background: var(--navbar-bg);
+    color: var(--text-color);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.theme-switcher {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    background: var(--accent-color);
+    color: var(--text-color);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #ff5722;
+}
+
+/* Product Section */
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 40px 20px;
+    margin-bottom: 30px;
+}
+
+.product-card {
+    background: var(--card-bg);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.product-card h3 {
+    margin-top: 15px;
+    color: var(--text-color);
+}
+
+.product-card p {
+    margin: 10px 0;
+    color: var(--text-color);
+}
+
+.price {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    background: var(--footer-bg);
+    color: var(--text-color);
+    text-align: center;
+    padding: 20px;
+    bottom: 0;
+    width: 100%;
+    margin-top: 3rem;;
+}
+
+/* Light Theme */
+body.light {
+    background-color: #f5f5f5;
+    color: #212121;
+}
+
+body.light .navbar {
+    background: #ffffff;
+    color: #212121;
+}
+
+body.light .product-card {
+    background: #eeeeee;
+}
+
+body.light .theme-switcher button {
+    background: #6b80faaf;
+}
+
+body.light .price {
+    color: #3f88b5;
+}
+
+/* Dark Theme */
+body.dark {
+    background-color: #181818;
+    color: #e0e0e0;
+}
+
+body.dark .navbar {
+    background: #252525;
+    color: #e0e0e0;
+}
+
+body.dark .product-card {
+    background: #2c2c2c;
+}
+
+body.dark .theme-switcher button {
+    background: #ff5722;
+}
+
+body.dark .price {
+    color: #ff5722;
+}

@@ -1,0 +1,119 @@
+/* Modern & Futuristic Product Cards */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg-color: #0d0d0d;
+    --text-color: #ffffff;
+    --card-bg: rgba(255, 255, 255, 0.1);
+    --card-shadow: rgba(0, 255, 255, 0.3);
+    --button-bg: linear-gradient(45deg, #ff00ff, #00ffff);
+    --border-color: rgba(255, 255, 255, 0.2);
+}
+
+.light-theme {
+    --bg-color: #ffffff;
+    --text-color: #121212;
+    --card-bg: rgba(0, 0, 0, 0.05);
+    --card-shadow: rgba(0, 0, 0, 0.1);
+    --button-bg: linear-gradient(45deg, #ff758c, #ff7eb3);
+    --border-color: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+nav {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--card-bg);
+    box-shadow: 0 4px 10px var(--card-shadow);
+    transition: background 0.5s ease-in-out;
+}
+
+.product-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 2rem;
+    max-width: 90vw;
+}
+
+.product-card {
+    width: 280px;
+    height: 400px;
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px var(--card-shadow);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border: 2px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px var(--card-shadow);
+}
+
+.product-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 12px;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+.product-card:hover img {
+    transform: translateY(-10px);
+}
+
+.product-card p {
+    margin: 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+    z-index: 10;
+}
+
+.product-card:hover p {
+    color: var(--text-color);
+}
+
+.product-card button {
+    background: var(--button-bg);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+    position: relative;
+    z-index: 10;
+}
+
+.product-card button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.3);
+}

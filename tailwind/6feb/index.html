@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mystify.biz</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"> Mystify </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="cart.html">View Cart (<span id="cart-count">0</span>)</a></li>
+        </ul>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <img src="menu-icon.png" alt="Menu">
+        </div>
+    </nav>
+    
+    <div class="theme-switcher">
+        <button onclick="changeTheme('dark')">Dark</button>
+        <button onclick="changeTheme('light')">Light</button>
+        <button onclick="changeTheme('dusk')">Dusk</button>
+        <button onclick="changeTheme('dawn')">Dawn</button>
+        <button onclick="changeTheme('moonlight')">Moonlight</button>
+    </div>
+    
+    <section id="products" class="products">
+        <h2 class="heading">Our Products</h2>
+        <div id="product-container" class="product-grid"></div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 E-Shop. All rights reserved.</p>
+    </footer>
+</body>
+</html>

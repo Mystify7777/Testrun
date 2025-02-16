@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vehicle Rentals</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Vehicle Rental Service</h1>
+    <nav>
+      <ul>
+        <li><a href="#hero-section">Home</a></li>
+        <li><a href="#filter-section">Filter</a></li>
+        <li><a href="#vehicle-list-section">Vehicles</a></li>
+        <li><a href="#footer">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="hero-section">
+    <div class="text">
+    <h2>Find Your Perfect Ride</h2>
+    <p>Discover the best vehicles for your journey, whether it’s a family trip, daily commute, or adventure ride.</p>
+    <a href="#footer">Contact Us</a>
+</div>
+<div class="img">
+    <img src="car6.png" alt="hero-img" /></div>
+  </section>
+
+  <main>
+    <section id="filter-section">
+      <h2>Filter Vehicles</h2>
+      <form id="filter-form">
+        <label for="category">Category:</label>
+        <select id="category">
+          <option value="all">All</option>
+          <option value="car">Car</option>
+          <option value="bike">Bike</option>
+          <option value="motorbike">Motorbike</option>
+        </select>
+
+        <label for="capacity">Minimum Capacity:</label>
+        <select id="capacity">
+          <option value="">Any</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="4">4</option>
+          <option value="7">7</option>
+        </select>
+
+        <label for="max-price">Max Price:</label>
+        <input type="number" id="max-price" placeholder="Enter max price" />
+
+        <label for="sort">Sort By:</label>
+        <select id="sort">
+          <option value="none">None</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+        </select>
+
+        <button type="submit">Apply Filters</button>
+      </form>
+    </section>
+
+    <section id="vehicle-list-section">
+      <h2>Available Vehicles</h2>
+      <div id="vehicle-list"></div>
+    </section>
+  </main>
+
+  <footer id="footer">
+
+    <div id="contact-section">
+      <h2>Contact Us</h2>
+      <form id="contact-form">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+          <label for="contact">Contact</label>
+          <input type="text" id="contact" name="contact" placeholder="Your Email or Phone" required>
+        </div>
+        <div class="form-group">
+          <label for="feedback">Feedback</label>
+          <textarea id="feedback" name="feedback" rows="4" placeholder="Your Feedback" required></textarea>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <p>&copy; 2025 Vehicle Rental Service. All rights reserved.</p>
+    <nav>
+      <ul>
+        <li><a href="#hero-section">Home</a></li>
+        <li><a href="#filter-section">Filter</a></li>
+        <li><a href="#vehicle-list-section">Vehicles</a></li>
+        <li><a href="#footer">Contact</a></li>
+      </ul>
+    </nav>
+  </footer>
+</body>
+<script src="script.js"></script>
+</html>

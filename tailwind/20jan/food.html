@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Display</title>
+  <link rel="stylesheet" href="food.css">
+</head>
+<body>
+<div class="main-container">
+  <div id="filters">
+    <h3>Filter Products</h3>
+
+    <!-- Brand Filter -->
+    <label for="brand">Select Brand:</label>
+    <select id="brand">
+      <option value="">All Brands</option>
+      <option value="SnackyTime">SnackyTime</option>
+      <option value="CrunchBites">CrunchBites</option>
+      <option value="DairyDelight">DairyDelight</option>
+      <option value="FreshPick">FreshPick</option>
+      <option value="YummyBites">YummyBites</option>
+    </select>
+
+    <!-- Category Filter -->
+    <label for="category">Select Category:</label>
+    <select id="category">
+      <option value="">All Categories</option>
+      <option value="Snacks">Snacks</option>
+      <option value="Dairy">Dairy</option>
+    </select>
+
+    <!-- Rating Filter -->
+    <label for="rating">Minimum Rating:</label>
+    <input type="number" id="rating" min="0" max="5" step="0.1" placeholder="Enter rating (0-5)" />
+
+    <!-- Flavour Filter -->
+    <label for="flavour">Select Flavour:</label>
+    <select id="flavour">
+      <option value="">All Flavours</option>
+      <option value="Chocolate">Chocolate</option>
+      <option value="Vanilla">Vanilla</option>
+      <option value="Sour Cream & Onion">Sour Cream & Onion</option>
+      <option value="BBQ">BBQ</option>
+      <option value="Strawberry">Strawberry</option>
+      <option value="Mango">Mango</option>
+      <option value="Blueberry">Blueberry</option>
+    </select>
+
+    <!-- Stock Filter -->
+    <label for="stock">In Stock:</label>
+    <input type="checkbox" id="stock" />
+
+    <h3>Sort Products</h3>
+
+    <!-- Sort by Expiration Date -->
+    <button onclick="sortByExpirationDate()">Sort by Expiration Date</button>
+
+    <!-- Sort by Price -->
+    <button onclick="sortByPrice()">Sort by Price</button>
+
+    <!-- Sort by Rating -->
+    <button onclick="sortByRating()">Sort by Rating</button>
+
+    <!-- Apply Filters Button -->
+    <button onclick="applyFilters()">Apply Filters</button>
+  </div>
+
+  <div id="product-container"></div>
+
+</div>
+
+  <script src="food.js"></script>
+</body>
+</html>

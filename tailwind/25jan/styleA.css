@@ -1,0 +1,99 @@
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fdfdfd;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    text-align: center;
+    background-color: #ff6b6b; /* Vibrant red */
+    color: white;
+    padding: 1em 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5em;
+}
+
+header h1 {
+    font-size: 2.2rem;
+    margin: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.car-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    text-align: center;
+    padding: 1rem;
+    flex: 0 1 calc(33.33% - 1rem); 
+    max-width: calc(33.33% - 1rem);
+    border: 2px solid #ff6b6b; 
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.car-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.car-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 2px solid #ff6b6b; 
+    margin-bottom: 1rem;
+}
+
+.car-card h3 {
+    font-size: 1.3rem;
+    margin: 0.5rem 0;
+    color: #1e90ff; 
+}
+
+.car-card p {
+    margin: 0.3rem 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.car-card p span {
+    font-weight: bold;
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .car-card {
+        flex: 0 1 calc(50% - 1rem); 
+        max-width: calc(50% - 1rem);
+    }
+
+    .car-card img {
+        height: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .car-card {
+        flex: 0 1 100%; 
+        max-width: 100%;
+    }
+
+    .car-card img {
+        height: 150px;
+    }
+}

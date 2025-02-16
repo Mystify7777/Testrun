@@ -1,0 +1,106 @@
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #e8f6f8, #d0eff1);
+    color: #2c3e50;
+    line-height: 1.6;
+}
+
+header {
+    text-align: center;
+    background: linear-gradient(90deg, #3498db, #1abc9c);
+    color: white;
+    padding: 1.5em 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5em;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    font-weight: bold;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.car-card {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 1.5rem;
+    flex: 0 1 calc(25% - 1rem); 
+    max-width: calc(25% - 1rem);
+}
+
+.car-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+.car-card h3 {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+    color: #16a085;
+}
+
+.car-card p {
+    margin: 0.3rem 0;
+    font-size: 1rem;
+    color: #555;
+}
+
+.car-card p span {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+@media (max-width: 768px) {
+    header {
+        font-size: 1.5rem;
+        padding: 1em 0;
+    }
+
+    .car-card {
+        flex: 0 1 calc(50% - 1rem);
+        max-width: calc(50% - 1rem);
+    }
+
+    .car-card p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        font-size: 1.2rem;
+    }
+
+    main {
+        padding: 1rem;
+    }
+
+    .car-card {
+        flex: 0 1 100%; 
+        max-width: 100%;
+    }
+
+    .car-card p {
+        font-size: 0.8rem;
+    }
+}

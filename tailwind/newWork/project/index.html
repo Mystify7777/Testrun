@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Product List</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body class="bg-gray-100">
+
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold text-center mb-6">Product List</h1>
+
+    <!-- Filter Section -->
+    <div class="filter-section flex justify-around mb-6">
+      <div>
+        <label for="priceRange" class="block text-sm font-medium text-gray-700">Price Range</label>
+        <select id="priceRange" class="filter-select"></select>
+      </div>
+      <div>
+        <label for="inStock" class="block text-sm font-medium text-gray-700">Stock Status</label>
+        <select id="inStock" class="filter-select"></select>
+      </div>
+      <div>
+        <label for="minReview" class="block text-sm font-medium text-gray-700">Minimum Review</label>
+        <select id="minReview" class="filter-select"></select>
+      </div>
+      <div>
+        <label for="color" class="block text-sm font-medium text-gray-700">Color</label>
+        <select id="color" class="filter-select"></select>
+      </div>
+    </div>
+
+    <!-- Products Section -->
+    <div id="productContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+    </div>
+  </div>
+
+  <script src="data/products.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

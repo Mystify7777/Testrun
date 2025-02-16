@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<section id="portfolio-form">
+    <h2>Create Your Portfolio</h2>
+    <form id="portfolioForm">
+        <!-- Profile Image Input -->
+        <label for="image">Profile Image</label>
+        <input type="file" id="image" name="image" accept="image/*" required>
+        <img id="profileImage" class="profile-image" src="" alt="Profile Image Preview">
+
+        <!-- Personal Info -->
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+      
+        <label for="bio">Bio</label>
+        <textarea id="bio" name="bio" rows="4" required></textarea>
+      
+        <!-- Skills -->
+        <label for="skills">Skills (comma-separated)</label>
+        <input type="text" id="skills" name="skills" required>
+      
+        <!-- Projects -->
+        <label for="projects">Projects (comma-separated)</label>
+        <input type="text" id="projects" name="projects" required>
+
+        <!-- Social Media Links -->
+        <label for="contact">Social Media Links</label>
+        <div class="social-links">
+            <input type="url" id="linkedin" name="linkedin" placeholder="LinkedIn URL">
+            <input type="url" id="github" name="github" placeholder="GitHub URL">
+            <input type="url" id="twitter" name="twitter" placeholder="Twitter URL">
+        </div>
+
+        <!-- Contact Info -->
+        <label for="contact">Contact Info</label>
+        <input type="text" id="contact" name="contact" required>
+
+        <!-- Color Preference -->
+        <label for="color">Portfolio Color Preference</label>
+        <input type="color" id="color" name="color" value="#5C6BC0">
+
+        <button type="submit">Generate Portfolio</button>
+    </form>
+</section>
+
+<script src="script.js"></script>
+
+</body>
+</html>

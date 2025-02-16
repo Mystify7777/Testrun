@@ -1,0 +1,23 @@
+.product-carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding: 20px;
+    white-space: nowrap;
+}
+
+.carousel-card {
+    background: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    min-width: 250px;
+    padding: 10px;
+    flex: 0 0 auto;
+}
+
+.carousel-image img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+}
